@@ -1,0 +1,15 @@
+services:
+  servercapx:
+    build: .
+    container_name: capx
+    restart: always
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8089:8000"
+    networks:
+      - cap
+
+networks:
+  cap:
+    name: nginx
+    external: true
